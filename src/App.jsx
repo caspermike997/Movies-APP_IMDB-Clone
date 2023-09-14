@@ -13,7 +13,7 @@ const API_URL =`${server}/popular?api_key=${API_KEY}&language=en-US&page=1`
   useEffect (() =>{
       fetch(API_URL)
       .then(res => res.json())
-      .then(data  => setMovies(data))
+      .then(data  => setMovies(data.results))
   },[])
 console.log(movies);
 
@@ -33,11 +33,11 @@ console.log(movies);
       </div>
 
 
-      {/* <div className='movies'>
-        {movies.map((movie)=>{
-          <MovieCard />
-        })}
-      </div> */}
+      <div className='movies'>
+        {movies.map((movie) =>(
+          <MovieCard {...movie} />
+        ))}
+      </div>
     </div>
   )
 }
